@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CinemaProject.Halls;
+using CinemaProject.Seats;
 
 namespace CinemaProject;
 
@@ -6,8 +8,12 @@ public class CinemaProjectApplicationAutoMapperProfile : Profile
 {
     public CinemaProjectApplicationAutoMapperProfile()
     {
-        /* You can configure your AutoMapper mapping configuration here.
-         * Alternatively, you can split your mapping configurations
-         * into multiple profile classes for a better organization. */
+        CreateMap<Hall, HallDto>();
+        CreateMap<CreateHallDto, Hall>();
+        CreateMap<UpdateHallDto, Hall>();
+
+        CreateMap<Seat, SeatDto>();
+        CreateMap<CreateSeatDto, Seat>();
+        CreateMap<UpdateSeatDto, Seat>();
     }
 }

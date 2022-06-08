@@ -92,7 +92,7 @@ public class CinemaProjectDbContext :
             b.ConfigureByConvention();
             b.Property(x => x.Number).IsRequired();
             b.Property(x => x.Row).IsRequired();
-            b.Property(x => x.Hall).IsRequired();
+            b.Property(x => x.HallId).IsRequired();
         });
     }
 }
