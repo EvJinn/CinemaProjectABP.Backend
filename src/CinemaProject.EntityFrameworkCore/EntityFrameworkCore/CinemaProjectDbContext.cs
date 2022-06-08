@@ -1,4 +1,5 @@
 ﻿using CinemaProject.Halls;
+using CinemaProject.Seats;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -26,6 +27,7 @@ public class CinemaProjectDbContext :
     ITenantManagementDbContext
 {
     public DbSet<Hall> Halls { get; set; }
+    public DbSet<Seat> Seats { get; set; }
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     #region Entities from the modules
@@ -83,6 +85,14 @@ public class CinemaProjectDbContext :
             b.ToTable(CinemaProjectConsts.DbTablePrefix + "Halls", CinemaProjectConsts.DbSchema);
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired();
+        });
+        builder.Entity<Seat>(b =>
+        {
+            b.ToTable(CinemaProjectConsts.DbTablePrefix + "Seats", CinemaProjectConsts.DbSchema);
+            b.ConfigureByConvention();
+            b.Property(x => x.Number).IsRequired();
+            b.Property(x => x.Row).IsRequired();
+            b.Property(x => x.Hall).IsRequired();
         });
     }
 }
